@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme Variables */
+:root {
+  --color-bg: #050505;
+  --color-primary: #ff0033;
+  --color-secondary: #8b5cf6;
+  --color-accent: #00ffff;
+  --neon-red: #ff0033;
+  --neon-purple: #bc13fe;
+}
+
+[data-theme="cyberpunk"] {
+  --color-bg: #050505;
+  --color-primary: #ff0033;
+  --color-secondary: #8b5cf6;
+  --color-accent: #00ffff;
+  --neon-red: #ff0033;
+  --neon-purple: #bc13fe;
+}
+
+[data-theme="classic"] {
+  --color-bg: #0f172a;
+  --color-primary: #e50914;
+  --color-secondary: #b81d24;
+  --color-accent: #ffffff;
+  --neon-red: #e50914;
+  --neon-purple: #b81d24;
+}
+
+[data-theme="ocean"] {
+  --color-bg: #020617;
+  --color-primary: #0ea5e9;
+  --color-secondary: #3b82f6;
+  --color-accent: #f8fafc;
+  --neon-red: #0ea5e9;
+  --neon-purple: #3b82f6;
+}
+
+[data-theme="sunset"] {
+  --color-bg: #1e1b4b;
+  --color-primary: #f43f5e;
+  --color-secondary: #fbbf24;
+  --color-accent: #fef2f2;
+  --neon-red: #f43f5e;
+  --neon-purple: #fbbf24;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: #fff;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force hardware acceleration for the whole app to prevent flickers */
+#root {
+  isolation: isolate;
+  transform: translate3d(0, 0, 0);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-glow {
+  box-shadow: 0 0 10px var(--neon-red);
+}
+
+.neon-glow:hover {
+  box-shadow: 0 0 20px var(--neon-red), 0 0 40px var(--neon-purple);
+}
+
+/* Gradient shift animation for trailer modal */
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
