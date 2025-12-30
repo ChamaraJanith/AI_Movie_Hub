@@ -26,22 +26,18 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          # Path eka client folder ekata hadanna
-          cache-dependency-path: ./client/package-lock.json
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./client
 
       - name: Build
         run: npm run build
-        working-directory: ./client
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite build unama dist folder eka thiyenne client folder eka athule
-          path: './client/dist'
+          # Vite build unama okkoma yanne root eke thiyena dist folder ekata
+          path: './dist'
 
   deploy:
     environment:
