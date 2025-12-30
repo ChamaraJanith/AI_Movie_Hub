@@ -48,6 +48,10 @@
   --neon-purple: #fbbf24;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background-color: var(--color-bg);
   color: #fff;
@@ -55,6 +59,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
 }
 
 /* Force hardware acceleration for the whole app to prevent flickers */
@@ -80,7 +90,6 @@ body {
 
 /* Gradient shift animation for trailer modal */
 @keyframes gradient-shift {
-
   0%,
   100% {
     background-position: 0% 50%;
