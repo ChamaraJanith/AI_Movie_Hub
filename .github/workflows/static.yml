@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,21 +26,23 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          # Code eka thiyenne client folder eke nisa meka danna ona
+          # Dependency path eka client folder ekata danna
           cache-dependency-path: ./client/package-lock.json
 
       - name: Install dependencies
+        # Client folder eka athule install karanna
         run: npm install
         working-directory: ./client
 
       - name: Build
+        # Client folder eka athule build karanna
         run: npm run build
         working-directory: ./client
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite build unama hadeena dist folder eka client athule thiyenne
+          # Build folder (dist) eka thiyenneth client athule
           path: './client/dist'
 
   deploy:
